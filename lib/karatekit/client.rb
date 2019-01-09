@@ -12,6 +12,7 @@ require 'karatekit/client/events'
 require 'karatekit/client/event_details'
 require 'karatekit/client/event_parts'
 require 'karatekit/client/posts'
+require 'karatekit/client/instructors'
 require 'karatekit/client/rate_limit'
 
 module Karatekit
@@ -33,6 +34,7 @@ module Karatekit
     include Karatekit::Client::EventDetails
     include Karatekit::Client::EventParts
     include Karatekit::Client::Posts
+    include Karatekit::Client::Instructors
     include Karatekit::Client::RateLimit
 
     # Header keys that can be passed in options hash to {#get},{#head}
