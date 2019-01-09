@@ -1,5 +1,5 @@
 # @see https://github.com/sferik/twitter/blob/aa909b3b7733ca619d80f1c8cba961033d1fc7e6/lib/twitter/enumerable.rb
-module Kampfsport
+module Karatekit
   module Enumerable
     include ::Enumerable
 

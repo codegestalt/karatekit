@@ -1,4 +1,4 @@
-module Kampfsport
+module Karatekit
   class HTTPError < StandardError
     attr_reader :response
     attr_reader :params
@@ -19,7 +19,7 @@ module Kampfsport
   class RateLimited < HTTPError; end
   class NotFound < HTTPError; end
   class Unavailable < HTTPError; end
-  class InformKampfsport < HTTPError; end
+  class InformKampfsportCenter < HTTPError; end
   class BadRequest < HTTPError; end
   class ServerError < HTTPError; end
   class AuthenticationFailed < HTTPError ; end

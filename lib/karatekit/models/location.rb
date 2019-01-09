@@ -1,6 +1,6 @@
-module Kampfsport
+module Karatekit
   module Models
-    class Location < KampfsportRecord
+    class Location < KaratekitRecord
       attributed :id,
                  :archived,
                  :address

@@ -1,4 +1,4 @@
-module Kampfsport
+module Karatekit
   class AuthenticationError < StandardError
   end
 

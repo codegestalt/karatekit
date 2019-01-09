@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "kampfsport/version"
+require "karatekit/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "kampfsport"
-  spec.version       = Kampfsport::VERSION
+  spec.name          = "karatekit"
+  spec.version       = Karatekit::VERSION
   spec.authors       = ["Daniel Puglisi"]
   spec.email         = ["daniel@codegestalt.com"]
 

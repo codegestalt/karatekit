@@ -2,7 +2,7 @@
 require "http"
 require "json"
 
-module Kampfsport
+module Karatekit
   class Client
     # DEFAULT_HOST = "https://api.kampfsport.center/v1"
     DEFAULT_HOST = "http://api.kampfsport.test/v1"
@@ -18,7 +18,7 @@ module Kampfsport
     end
 
     def locations(opts = {})
-      Kampfsport::Models::Locations.new(get("locations", opts), opts, client: self)
+      Karatekit::Models::Locations.new(get("locations", opts), opts, client: self)
     end
 
     def get(path, opts = {})
@@ -42,8 +42,8 @@ module Kampfsport
       end
       response = http.send(method, uri, params)
 
-      raise Kampfsport::AuthenticationError.new(response.to_s) if auth_error?(response)
-      raise Kampfsport::UnprocessableRequest.new(response.to_s) if response.code.to_i == 422
+      raise Karatekit::AuthenticationError.new(response.to_s) if auth_error?(response)
+      raise Karatekit::UnprocessableRequest.new(response.to_s) if response.code.to_i == 422
 
       response
     end

@@ -1,13 +1,13 @@
-module Kampfsport
+module Karatekit
   module Models
     class Base
       attr_accessor :attributes
-      attr_reader :kampfsport_client
+      attr_reader :karatekit_client
 
       def initialize(attrs, opts = {})
         @models = {}
         @attributes = attrs.dup
-        @kampfsport_client = opts[:client] || Kampfsport::Client.new(opts)
+        @karatekit_client = opts[:client] || Karatekit::Client.new(opts)
       end
 
       def self.attributed(*attribute_names)
@@ -21,8 +21,8 @@ module Kampfsport
       def self.modeled(opts = {})
         opts.each do |attribute_name, model|
           attribute_name_string = attribute_name.to_s
-          Kampfsport::Models::Base.send :define_method, attribute_name_string do
-            @models[attribute_name_string] ||= model.new(@attributes[attribute_name_string] || {}, client: kampfsport_client)
+          Karatekit::Models::Base.send :define_method, attribute_name_string do
+            @models[attribute_name_string] ||= model.new(@attributes[attribute_name_string] || {}, client: karatekit_client)
           end
         end
       end
@@ -32,16 +32,16 @@ module Kampfsport
       end
 
       def fetch
-        self.class.new(@kampfsport_client.get(path), client: @kampfsport_client)
+        self.class.new(@karatekit_client.get(path), client: @karatekit_client)
       end
 
       # Retrieves an instance of the object by ID
       #
       # @param id [Integer] the id of the object to retrieve
-      # @param opts [Hash] options to pass along to the `Kampfsport::Client`
+      # @param opts [Hash] options to pass along to the `Karatekit::Client`
       #   instance
       def self.get(id, opts = {})
-        client = opts[:client] || Kampfsport::Client.new(opts)
+        client = opts[:client] || Karatekit::Client.new(opts)
         self.new({ 'id' => id }, opts).fetch
       end
     end

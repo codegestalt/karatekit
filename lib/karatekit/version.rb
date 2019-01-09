@@ -1,3 +1,3 @@
-module Kampfsport
+module Karatekit
   VERSION = "0.1.0"
 end

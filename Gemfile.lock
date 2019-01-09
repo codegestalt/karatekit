@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kampfsport (0.1.0)
+    karatekit (0.1.0)
       http (~> 4.0, >= 4.0)
 
 GEM
@@ -32,7 +32,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.16)
-  kampfsport!
+  karatekit!
   minitest (~> 5.0)
   rake (~> 10.0)
 

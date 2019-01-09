@@ -1,4 +1,4 @@
-module Kampfsport
+module Karatekit
   class OAuthCredentials
     def initialize(access_token)
       @access_token = access_token

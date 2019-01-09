@@ -1,7 +1,7 @@
-module Kampfsport
+module Karatekit
   module Models
-    class KampfsportRecordCollection < Base
-      include Kampfsport::Enumerable
+    class KaratekitRecordCollection < Base
+      include Karatekit::Enumerable
       extend Forwardable
 
       attributed :per_page,
