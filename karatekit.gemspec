@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Daniel Puglisi"]
   spec.email         = ["daniel@codegestalt.com"]
 
-  spec.summary       = %q{Ruby wrapper for kampfsport.center API}
-  spec.description   = %q{Ruby wrapper for kampfsport.center API}
+  spec.summary       = %q{Ruby toolkit for the kampfsport.center API}
+  spec.description   = %q{Ruby toolkit for the kampfsport.center API}
   spec.homepage      = "https://kampfsport.center"
 
   # Specify which files should be added to the gem when it is released.
