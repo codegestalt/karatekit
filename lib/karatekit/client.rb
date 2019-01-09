@@ -1,55 +1,58 @@
-# frozen_string_literal: true
-require "http"
-require "json"
+require 'karatekit/connection'
+require 'karatekit/warnable'
+require 'karatekit/arguments'
+require 'karatekit/configurable'
+require 'karatekit/authentication'
+require 'karatekit/rate_limit'
+
+require 'karatekit/client/locations'
+require 'karatekit/client/rate_limit'
 
 module Karatekit
+
+  # Client for the kampfsport.center API
+  #
+  # @see https://developer.kampfsport.center
   class Client
-    # DEFAULT_HOST = "https://api.kampfsport.center/v1"
-    DEFAULT_HOST = "http://api.kampfsport.test/v1"
 
-    attr_accessor :access_token
+    include Karatekit::Authentication
+    include Karatekit::Configurable
+    include Karatekit::Connection
+    include Karatekit::Warnable
 
-    def initialize(access_token: ENV['KAMPFSPORT_ACCESS_TOKEN'])
-      @access_token = access_token.to_s
+    include Karatekit::Client::Locations
+    include Karatekit::Client::RateLimit
 
-      if access_token.length == 0
-        raise ArgumentError.new("Access token is required. Access token: '#{@access_token}'.")
+    # Header keys that can be passed in options hash to {#get},{#head}
+    CONVENIENCE_HEADERS = Set.new([:accept, :content_type])
+
+    def initialize(options = {})
+      # Use options passed in, but fall back to module defaults
+      Karatekit::Configurable.keys.each do |key|
+        value = options.key?(key) ? options[key] : Karatekit.instance_variable_get(:"@#{key}")
+        instance_variable_set(:"@#{key}", value)
       end
     end
 
-    def locations(opts = {})
-      Karatekit::Models::Locations.new(get("locations", opts), opts, client: self)
-    end
+    # Text representation of the client, masking tokens and passwords
+    #
+    # @return [String]
+    def inspect
+      inspected = super
 
-    def get(path, opts = {})
-      url = "#{DEFAULT_HOST}/#{path}"
-      url += "?#{opts.map {|k, v| "#{k}=#{v}"}.join("&")}" if opts.any?
-      uri = URI(url)
-      response = http_response(:get, uri)
-      JSON.parse(response.body)
-    end
-
-  private
-
-    def http_response(method, uri, opts = {})
-      response = nil
-
-      http = HTTP["User-Agent" => "kampfsport.center Ruby Gem",
-                  "Authorization" => "Bearer #{@access_token}"]
-      params = {}
-      if opts[:body]
-        params[:json] = opts[:body]
+      if @access_token
+        inspected = inspected.gsub! @access_token, "#{'*'*36}#{@access_token[36..-1]}"
       end
-      response = http.send(method, uri, params)
 
-      raise Karatekit::AuthenticationError.new(response.to_s) if auth_error?(response)
-      raise Karatekit::UnprocessableRequest.new(response.to_s) if response.code.to_i == 422
-
-      response
+      inspected
     end
 
-    def auth_error?(response)
-      response.code.to_i == 403 || response.code.to_i == 401
+    # Set OAuth access token for authentication
+    #
+    # @param value [String] 40 character kampfsport.center OAuth access token
+    def access_token=(value)
+      reset_agent
+      @access_token = value
     end
   end
 end
