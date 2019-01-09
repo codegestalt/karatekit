@@ -8,6 +8,7 @@ require 'karatekit/rate_limit'
 require 'karatekit/client/locations'
 require 'karatekit/client/products'
 require 'karatekit/client/sessions'
+require 'karatekit/client/events'
 require 'karatekit/client/rate_limit'
 
 module Karatekit
@@ -25,6 +26,7 @@ module Karatekit
     include Karatekit::Client::Locations
     include Karatekit::Client::Products
     include Karatekit::Client::Sessions
+    include Karatekit::Client::Events
     include Karatekit::Client::RateLimit
 
     # Header keys that can be passed in options hash to {#get},{#head}
