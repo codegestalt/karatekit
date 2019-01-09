@@ -98,7 +98,7 @@ module Karatekit
       data
     end
 
-    # Hypermedia agent for the GitHub API
+    # Hypermedia agent for the kampfsport.center API
     #
     # @return [Sawyer::Agent]
     def agent

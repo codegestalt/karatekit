@@ -1,7 +1,7 @@
 require 'karatekit/client'
 require 'karatekit/default'
 
-# Ruby toolkit for the GitHub API
+# Ruby toolkit for the kampfsport.center API
 module Karatekit
 
   class << self

@@ -1,5 +1,5 @@
 module Karatekit
-  # Custom error class for rescuing from all GitHub errors
+  # Custom error class for rescuing from all kampfsport.center errors
   class Error < StandardError
 
     # Returns the appropriate Karatekit::Error subclass based
@@ -86,21 +86,21 @@ module Karatekit
       end
     end
 
-    # Status code returned by the GitHub server.
+    # Status code returned by the kampfsport.center server.
     #
     # @return [Integer]
     def response_status
       @response[:status]
     end
 
-    # Headers returned by the GitHub server.
+    # Headers returned by the kampfsport.center server.
     #
     # @return [Hash]
     def response_headers
       @response[:response_headers]
     end
 
-    # Body returned by the GitHub server.
+    # Body returned by the kampfsport.center server.
     #
     # @return [String]
     def response_body
@@ -177,66 +177,66 @@ module Karatekit
   # Raised on errors in the 400-499 range
   class ClientError < Error; end
 
-  # Raised when GitHub returns a 400 HTTP status code
+  # Raised when kampfsport.center returns a 400 HTTP status code
   class BadRequest < ClientError; end
 
-  # Raised when GitHub returns a 401 HTTP status code
+  # Raised when kampfsport.center returns a 401 HTTP status code
   class Unauthorized < ClientError; end
 
-  # Raised when GitHub returns a 403 HTTP status code
+  # Raised when kampfsport.center returns a 403 HTTP status code
   class Forbidden < ClientError; end
 
-  # Raised when GitHub returns a 403 HTTP status code
+  # Raised when kampfsport.center returns a 403 HTTP status code
   # and body matches 'rate limit exceeded'
   class TooManyRequests < Forbidden; end
 
-  # Raised when GitHub returns a 403 HTTP status code
+  # Raised when kampfsport.center returns a 403 HTTP status code
   # and body matches 'login attempts exceeded'
   class TooManyLoginAttempts < Forbidden; end
 
-  # Raised when GitHub returns a 403 HTTP status code
+  # Raised when kampfsport.center returns a 403 HTTP status code
   # and body matches 'abuse'
   class AbuseDetected < Forbidden; end
 
-  # Raised when GitHub returns a 403 HTTP status code
+  # Raised when kampfsport.center returns a 403 HTTP status code
   # and body matches 'email address must be verified'
   class UnverifiedEmail < Forbidden; end
 
-  # Raised when GitHub returns a 403 HTTP status code
+  # Raised when kampfsport.center returns a 403 HTTP status code
   # and body matches 'account was suspended'
   class AccountSuspended < Forbidden; end
 
-  # Raised when GitHub returns a 404 HTTP status code
+  # Raised when kampfsport.center returns a 404 HTTP status code
   class NotFound < ClientError; end
 
-  # Raised when GitHub returns a 405 HTTP status code
+  # Raised when kampfsport.center returns a 405 HTTP status code
   class MethodNotAllowed < ClientError; end
 
-  # Raised when GitHub returns a 406 HTTP status code
+  # Raised when kampfsport.center returns a 406 HTTP status code
   class NotAcceptable < ClientError; end
 
-  # Raised when GitHub returns a 409 HTTP status code
+  # Raised when kampfsport.center returns a 409 HTTP status code
   class Conflict < ClientError; end
 
-  # Raised when GitHub returns a 414 HTTP status code
+  # Raised when kampfsport.center returns a 414 HTTP status code
   class UnsupportedMediaType < ClientError; end
 
-  # Raised when GitHub returns a 422 HTTP status code
+  # Raised when kampfsport.center returns a 422 HTTP status code
   class UnprocessableEntity < ClientError; end
 
   # Raised on errors in the 500-599 range
   class ServerError < Error; end
 
-  # Raised when GitHub returns a 500 HTTP status code
+  # Raised when kampfsport.center returns a 500 HTTP status code
   class InternalServerError < ServerError; end
 
-  # Raised when GitHub returns a 501 HTTP status code
+  # Raised when kampfsport.center returns a 501 HTTP status code
   class NotImplemented < ServerError; end
 
-  # Raised when GitHub returns a 502 HTTP status code
+  # Raised when kampfsport.center returns a 502 HTTP status code
   class BadGateway < ServerError; end
 
-  # Raised when GitHub returns a 503 HTTP status code
+  # Raised when kampfsport.center returns a 503 HTTP status code
   class ServiceUnavailable < ServerError; end
 
   # Raised when client fails to provide valid Content-Type
