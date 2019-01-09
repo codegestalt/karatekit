@@ -6,6 +6,7 @@ require 'karatekit/authentication'
 require 'karatekit/rate_limit'
 
 require 'karatekit/client/locations'
+require 'karatekit/client/products'
 require 'karatekit/client/rate_limit'
 
 module Karatekit
@@ -21,6 +22,7 @@ module Karatekit
     include Karatekit::Warnable
 
     include Karatekit::Client::Locations
+    include Karatekit::Client::Products
     include Karatekit::Client::RateLimit
 
     # Header keys that can be passed in options hash to {#get},{#head}

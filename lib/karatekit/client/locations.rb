@@ -14,7 +14,7 @@ module Karatekit
         paginate "locations", options
       end
 
-      # Get a single commit
+      # Get a single location
       #
       # @param id [Integer] ID of the location
       # @return [Sawyer::Resource] A single location
