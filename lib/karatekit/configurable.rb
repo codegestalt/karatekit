@@ -22,11 +22,10 @@ module Karatekit
     #   @return [String] Configure User-Agent header for requests.
 
     attr_accessor :access_token, :auto_paginate,
-                  :connection_options,
+                  :connection_options, :default_media_type,
                   :middleware,
                   :per_page, :user_agent
     attr_writer :api_endpoint
-    attr_reader :default_media_type
 
     class << self
 

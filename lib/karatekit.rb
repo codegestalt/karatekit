@@ -18,9 +18,7 @@ module Karatekit
     private
 
     def respond_to_missing?(method_name, include_private=false)
-      client.respond_to?(method_name, include_private) ||
-      enterprise_admin_client.respond_to?(method_name, include_private) ||
-      enterprise_management_console_client.respond_to?(method_name, include_private)
+      client.respond_to?(method_name, include_private)
     end
 
     def method_missing(method_name, *args, &block)
