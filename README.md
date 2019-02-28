@@ -1,3 +1,5 @@
+> NOTE: This gem is WORK IN PROGRESS
+
 # Karatekit
 
 Ruby toolkit for the kampfsport.center API.
